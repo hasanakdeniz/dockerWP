@@ -32,7 +32,7 @@ services:
     image: atmoz/sftp
     restart: always
     ports:
-      - "${PORTS}:22"
+      - "${SFTP_PORT}:22"
     # UID 33 (www-data) olarak ayarlandı, yetki sorunu yaşatmaz.
     command: "${SFTP_USER}:${SFTP_PASSWORD}:33"
     volumes:

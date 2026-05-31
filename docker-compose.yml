@@ -17,6 +17,7 @@ services:
     restart: always
     volumes:
       - ./html:/var/www/html
+      - web_data:/var/www/html
     labels:      
       - traefik.http.routers.hasanakdeniz-web.rule=${DOMAIN}
       - traefik.http.routers.hasanakdeniz-web.entrypoints=websecure
@@ -31,7 +32,8 @@ services:
     # UID 33 (www-data) olarak ayarlandı, web sunucusu ile tam uyumlu
     command: "${SFTP_USER}:${SFTP_PASSWORD}:33"
     volumes:
-      - ./html:/home/${SFTP_USER}/html
+      - web_data:/home/${SFTP_USER}/html
 
 volumes:
   db_data: {}
+  web_data: {}

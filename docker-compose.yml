@@ -31,8 +31,7 @@ services:
     # UID 33 (www-data) olarak ayarlandı, web sunucusu ile tam uyumlu
     command: "${SFTP_USER}:${SFTP_PASSWORD}:33"
     volumes:
-      - ./html:/home/${SFTP_USER}/html
+      - ./html:/home/${SFTP_USER}/share
 
 volumes:
   db_data: {}
-  web_data: {}

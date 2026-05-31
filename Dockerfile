@@ -1,8 +1,7 @@
 FROM php:8.3-apache
 
-# WordPress için gerekli PHP eklentileri ve URL yönlendirme modülü
 RUN docker-php-ext-install mysqli pdo pdo_mysql \
     && a2enmod rewrite
 
-# Yetkileri Apache (www-data) kullanıcısına devrediyoruz
-RUN chown -R www-data:www-data /var/www/html
+# Her açılışta izinleri www-data (33) olarak ayarlar ve Apache'yi başlatır
+CMD chown -R www-data:www-data /var/www/html && chmod -R 775 /var/www/html && apache2-foreground

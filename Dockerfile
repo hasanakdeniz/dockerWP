@@ -1,6 +1,8 @@
-FROM wordpress:latest
+FROM php:8.3-apache
 
-# Gerekli klasör izinlerini Apache kullanıcısına (www-data) devrediyoruz.
-RUN chown -R www-data:www-data /var/www/html \
-    && find /var/www/html -type d -exec chmod 775 {} \; \
-    && find /var/www/html -type f -exec chmod 664 {} \;
+# WordPress için gerekli PHP eklentileri ve URL yönlendirme modülü
+RUN docker-php-ext-install mysqli pdo pdo_mysql \
+    && a2enmod rewrite
+
+# Yetkileri Apache (www-data) kullanıcısına devrediyoruz
+RUN chown -R www-data:www-data /var/www/html

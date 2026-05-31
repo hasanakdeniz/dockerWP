@@ -17,7 +17,6 @@ services:
     restart: always
     volumes:
       - web_data:/var/www/html
-      - ./html:/var/www/html
     labels:      
       - traefik.http.routers.hasanakdeniz-web.rule=${DOMAIN}
       - traefik.http.routers.hasanakdeniz-web.entrypoints=websecure

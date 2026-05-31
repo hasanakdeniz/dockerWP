@@ -16,7 +16,7 @@ services:
       dockerfile: Dockerfile
     restart: always
     volumes:
-      - web_data:/var/www/html
+      - ./html:/var/www/html
     labels:      
       - traefik.http.routers.hasanakdeniz-web.rule=${DOMAIN}
       - traefik.http.routers.hasanakdeniz-web.entrypoints=websecure
@@ -31,7 +31,7 @@ services:
     # UID 33 (www-data) olarak ayarlandı, web sunucusu ile tam uyumlu
     command: "${SFTP_USER}:${SFTP_PASSWORD}:33"
     volumes:
-      - web_data:/home/${SFTP_USER}/html
+      - ./html:/home/${SFTP_USER}/html
 
 volumes:
   db_data: {}

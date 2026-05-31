@@ -3,10 +3,10 @@ services:
     image: mariadb:lts
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${POSTGRES_PASSWORD}
-      MYSQL_DATABASE: ${POSTGRES_DB}
-      MYSQL_USER: ${POSTGRES_USER}
-      MYSQL_PASSWORD: ${POSTGRES_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
 
